@@ -1,17 +1,56 @@
 [gd_scene format=3 uid="uid://dw2kwfwo8njdn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htm08"]
-radius = 15.0
-height = 46.0
+[ext_resource type="Script" uid="uid://boj23lbc0hcl1" path="res://PlayerMovement.cs" id="1_v726c"]
+[ext_resource type="Texture2D" uid="uid://b2jnqkxss600y" path="res://icon.svg" id="2_nyb65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_si68q"]
+size = Vector2(128.33334, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htm08"]
+size = Vector2(1197.75, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6md3"]
+size = Vector2(86, 576)
 
 [node name="Overworld" type="Node2D" unique_id=464039195]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1765812077]
-modulate = Color(0, 0.39093482, 0.806721, 1)
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1765812077]
 scale = Vector2(3, 3)
 motion_mode = 1
+script = ExtResource("1_v726c")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=564197277]
-position = Vector2(-1, 1)
-shape = SubResource("CapsuleShape2D_htm08")
-debug_color = Color(0.12270429, 1.92523e-07, 0.7369021, 0.41960785)
+[node name="PlayerCollider2D" type="CollisionShape2D" parent="Player" unique_id=564197277]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_si68q")
+debug_color = Color(0.86882836, 0, 0.50002855, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1499159499]
+scale = Vector2(0.192, 0.2)
+texture = ExtResource("2_nyb65")
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=415699735]
+position = Vector2(0, -1)
+
+[node name="TestWall1" type="StaticBody2D" parent="." unique_id=1567025371]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall1" unique_id=1032082983]
+position = Vector2(-7.75, 309)
+shape = SubResource("RectangleShape2D_htm08")
+
+[node name="TestWall4" type="StaticBody2D" parent="." unique_id=460113598]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall4" unique_id=1410627783]
+position = Vector2(-1, -323)
+shape = SubResource("RectangleShape2D_htm08")
+
+[node name="TestWall2" type="StaticBody2D" parent="." unique_id=50307928]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall2" unique_id=481885268]
+position = Vector2(-559, -3)
+shape = SubResource("RectangleShape2D_p6md3")
+
+[node name="TestWall3" type="StaticBody2D" parent="." unique_id=1472855221]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWall3" unique_id=1077030413]
+position = Vector2(554, -5)
+shape = SubResource("RectangleShape2D_p6md3")
